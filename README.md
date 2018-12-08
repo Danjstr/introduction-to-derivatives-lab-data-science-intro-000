@@ -76,7 +76,7 @@ Now that we can represent a function in code, let's write a Python function call
 
 ```python
 def term_output(term, input_value):
-    pass
+    return term[0]*input_value**term[1]
 ```
 
 
@@ -96,7 +96,8 @@ Now write a function called `output_at`, when passed a `list_of_terms` and a val
 
 ```python
 def output_at(list_of_terms, x_value):
-    pass
+    outputs = list(map(lambda term: term_output(term, x_value), list_of_terms))
+    return sum(outputs)
 ```
 
 
@@ -168,7 +169,7 @@ four_x_plus_fifteen = [(4, 1), (15, 0)]
 
 ```python
 def delta_f(list_of_terms, x_value, delta_x):
-    pass
+    return output_at(list_of_terms, x_value + delta_x) - output_at(list_of_terms, x_value)
 ```
 
 
@@ -230,7 +231,8 @@ Let's try this for $f(x) = 4x + 15 $.  Round the result to three decimal places.
 
 ```python
 def derivative_of(list_of_terms, x_value, delta_x):
-    pass
+    delta = delta_f(list_of_terms, x_value, delta_x)
+    return round(delta/delta_x, 3)
 ```
 
 
